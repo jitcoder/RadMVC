@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    hello world <br/>
+    <button id="getbtn">Get Time</button> <br />
+    <div id="time"></div>
+
+    <p>&nbsp;</p>
+
+    Enter your name: <input id="username" name="username" type="text" />
+    <button id="stampbtn">Get Label</button>
+    <br />
+    <div id="display"></div>
+
+    <p><a href="/Forms/">Click here to go to Form testing</a></p>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#getbtn").click(function (e) {
+                e.preventDefault();
+                $.get("/GetTimestamp", function (data) {
+                    $("#time").html(data.DateTime);
+                });
+            });
+
+            $("#stampbtn").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/StampUsername',
+                    data: JSON.stringify({ "Name": $("#username").val() }),
+                    success: function (data) { 
+                        $("#display").html(data.Label);
+                    },
+                    contentType: "application/json",
+                    dataType: 'json'
+                });
+            });
+    
+        });
+    </script>
+</body>
+</html>
