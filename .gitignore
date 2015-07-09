@@ -1,3 +1,7 @@
 *.force
 *.cache
 *.suo
+*.dll
+*.pdb
+*.user
+*.obj
