@@ -5,3 +5,4 @@
 *.pdb
 *.user
 *.obj
+*.cache
