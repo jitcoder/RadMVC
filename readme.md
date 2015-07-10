@@ -1,2 +1,2 @@
 # RadMVC
-Optimized, Scalable, Isometric, Cross-Platform server side MVC Framework for .NET
+Optimized, scalable, isometric, cross-platform server side MVC Framework for .NET
