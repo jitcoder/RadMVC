@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2012
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC", "RadMVC\RadMVC.csproj", "{497F253E-5A0C-4938-A1F0-0E4C35C735A4}"
@@ -10,10 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC_StandAloneTest", "RadMVC_StandAloneTest\RadMVC_StandAloneTest.csproj", "{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -31,6 +27,10 @@ Global
 		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
