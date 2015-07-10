@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC", "RadMVC\RadMVC.csproj", "{497F253E-5A0C-4938-A1F0-0E4C35C735A4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RadMVC_TestWebsiteVBNET", "RadMVC_TestWebsiteVBNET\RadMVC_TestWebsiteVBNET.vbproj", "{88BBB0E1-7FCB-42C9-9A82-B0E0DCD1E7B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC_TestWebsite", "RadMVC_TestWebsite\RadMVC_TestWebsite.csproj", "{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -21,10 +21,10 @@ Global
 		{497F253E-5A0C-4938-A1F0-0E4C35C735A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{497F253E-5A0C-4938-A1F0-0E4C35C735A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{497F253E-5A0C-4938-A1F0-0E4C35C735A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88BBB0E1-7FCB-42C9-9A82-B0E0DCD1E7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88BBB0E1-7FCB-42C9-9A82-B0E0DCD1E7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88BBB0E1-7FCB-42C9-9A82-B0E0DCD1E7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88BBB0E1-7FCB-42C9-9A82-B0E0DCD1E7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
