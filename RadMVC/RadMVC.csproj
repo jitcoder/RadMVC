@@ -91,6 +91,7 @@
     <Compile Include="Mono_System.Net.Http\MultipartStreamProvider.cs" />
     <Compile Include="Mono_System.Net.Http\MultipartFileStreamProvider.cs" />
     <Compile Include="Mono_System.Net.Http\MultipartFileData.cs" />
+    <Compile Include="Mono_System.Net.Http\HttpContentFormDataExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,5 @@
-﻿// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+﻿#if __MonoCS__
+// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
 
 using System.Collections.ObjectModel;
 using System.IO;
@@ -71,3 +72,4 @@ namespace System.Net.Http
 		}
 	}
 }
+#endif
