@@ -179,5 +179,23 @@ namespace RadMVC
 
             return false;
         }
+
+        static public void LoadWebApplications()
+        {
+            Type WebApplicationType = typeof(WebApplication);
+            foreach (Assembly ass in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (!ass.IsDynamic && !ass.GlobalAssemblyCache)
+                {
+                    Type[] types = ass.ExportedTypes.Where(t => t.BaseType == WebApplicationType).ToArray();
+                    foreach (Type t in types)
+                    {
+                        WebApplication app = (WebApplication)Activator.CreateInstance(t);
+                        AppTree.AddToTree(app.Section, t.Name, app);
+                    }
+                }
+
+            }
+        }
     }
 }

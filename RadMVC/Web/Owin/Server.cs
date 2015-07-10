@@ -18,10 +18,11 @@ namespace RadMVC.Web.Owin
         }
         string IRadServer.MapPath(string path)
         {
-            path = path.Replace("~\\", "\"");
-            String uriPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
-            path = new Uri(uriPath).LocalPath + path;
-            return path;
+            path = path.Replace("~\\", "\"").Replace("~/","/").Replace("/","\\");
+            path = path.TrimStart(new char[]{'\\'});
+            string uriPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), path);
+
+            return uriPath;
         }
 
         string IRadServer.HtmlEncode(string content)

@@ -17,11 +17,8 @@ namespace RadMVC
 {
     class RadMvcModule : IHttpModule
     {
-        private List<WebApplication> applications = null;
-
         public void Dispose()
         {
-            this.applications.Clear();
         }
 
         public void Init(HttpApplication context)
@@ -69,17 +66,7 @@ namespace RadMVC
 
         public RadMvcModule()
         {
-            this.applications = new List<WebApplication>();
-            Type WebApplicationType = typeof(WebApplication);
-            foreach (Assembly ass in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                Type[] types = ass.ExportedTypes.Where(t => t.BaseType == WebApplicationType).ToArray();
-                foreach (Type t in types)
-                {
-                    WebApplication app = (WebApplication)Activator.CreateInstance(t);
-                    AppTree.AddToTree(app.Section, t.Name, app);
-                }
-            }
+            RadCore.LoadWebApplications();
         }
 
         public String ModuleName

@@ -34,7 +34,7 @@ namespace RadMVC
                 sb.Append(";</script></head>");
                 return Cache.getInstance()[this.context.Server.MapPath(this.Path.Replace("~", "~/Views"))].Replace("</head>", sb.ToString());
             }
-            return this.context.Server.MapPath(this.Path.Replace("~", "~/Views"));
+            return Cache.getInstance()[this.context.Server.MapPath(this.Path.Replace("~", "~/Views"))];
         }
 
     }

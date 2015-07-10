@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC", "RadMVC\RadMVC.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC_TestWebsite", "RadMVC_TestWebsite\RadMVC_TestWebsite.csproj", "{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMVC_StandAloneTest", "RadMVC_StandAloneTest\RadMVC_StandAloneTest.csproj", "{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -25,6 +27,10 @@ Global
 		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A01A8ED-0BE6-46F8-89A7-50BC4A2432B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700EEEE0-B505-4C5F-97D0-A98DB0097EA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

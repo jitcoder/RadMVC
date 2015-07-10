@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="/Forms/NormalPost" enctype="application/x-www-form-urlencoded">
+        Username: <input type="text" name="username" /><br/>
+        Password: <input type="password" name="password" /><br/>
+        <input type="submit" value="Login" />
+    </form>
+
+    <form action="/Forms/PostPicture" enctype="multipart/form-data">
+        Description: <input type="text" name="description" /><br />
+        File: <input type="file" name="fileupload"/><br />
+        <input type="submit" value="Upload" />
+    </form>
+</body>
+</html>
