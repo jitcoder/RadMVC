@@ -17,32 +17,19 @@ export default class UserController extends Rad.Controller{
             lastname:'marley'
         }));
         
-        this.addUser = this.addUser.bind(this);
-        this.index = this.index.bind(this);
     }
-    
-    addUser(newUser){
-        if(newUser instanceof UserModel){
-            newUser.save();
-            this.users.push(newUser);
-        }
-        else{
-            throw "invalid user object provided";
-        }
-       
-        Rad.UserController.index();
+
+    index(){
+        return <UserList onChangeView={Rad.UserController.helloWorld} users={this.users} />;
     }
    
-    index(){
+    helloWorld(){
         return <div>
             Hello World
-            <UserList onUserChanged={this.userChanged} users={this.users} />
+            <button onClick={Rad.UserController.index}>Go Back</button>
         </div>;
     }
-   
-    userChanged(userId){
-        Rad.SalesController.sales(userId);
-    }
+
 }
 
 Rad.Controllers.UserController = UserController;

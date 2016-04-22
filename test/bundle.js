@@ -111,9 +111,9 @@ var Rad = {
             controllerInterface.instance = new Rad.Controllers[controllerName]();
 
             Rad[controllerName] = controllerInterface;
-            Rad[controllerName].viewElement = document.querySelector('[controller="' + controllerName + '"]');
-            if (Rad[controllerName].viewElement) {
-                Rad.ReactDOM.render(Rad[controllerName].instance.index(), Rad[controllerName].viewElement);
+            Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
+            if (Rad[controllerName].instance.viewElement) {
+                Rad.ReactDOM.render(Rad[controllerName].instance.index(), Rad[controllerName].instance.viewElement);
                 //Rad[controllerName].currentView = Rad[controllerName].index;
             } else {
                     throw 'Controller found with no view to attach itself to (' + controllerName + ')';
@@ -18905,9 +18905,18 @@ var UserList = function (_React$Component) {
             }
 
             return _react2.default.createElement(
-                'ul',
+                'div',
                 null,
-                users
+                _react2.default.createElement(
+                    'ul',
+                    null,
+                    users
+                ),
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.props.onChangeView },
+                    'Change View'
+                )
             );
         }
     }]);
@@ -18919,7 +18928,8 @@ exports.default = UserList;
 
 
 UserList.propTypes = {
-    users: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.instanceOf(_usermodel2.default))
+    users: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.instanceOf(_usermodel2.default)).isRequired,
+    onChangeView: _react2.default.PropTypes.func.isRequired
 };
 
 },{"models/usermodel":165,"react":195}],164:[function(require,module,exports){
@@ -18972,37 +18982,31 @@ var UserController = function (_Rad$Controller) {
             lastname: 'marley'
         }));
 
-        _this.addUser = _this.addUser.bind(_this);
-        _this.index = _this.index.bind(_this);
         return _this;
     }
 
     _createClass(UserController, [{
-        key: 'addUser',
-        value: function addUser(newUser) {
-            if (newUser instanceof _usermodel2.default) {
-                newUser.save();
-                this.users.push(newUser);
-            } else {
-                throw "invalid user object provided";
-            }
-
-            _radmvc2.default.UserController.index();
-        }
-    }, {
         key: 'index',
         value: function index() {
             return _react2.default.createElement(
                 'div',
                 null,
-                'Hello World',
-                _react2.default.createElement(_userlist2.default, { onUserChanged: this.userChanged, users: this.users })
+                _react2.default.createElement(_userlist2.default, { onChangeView: _radmvc2.default.UserController.helloWorld, users: this.users })
             );
         }
     }, {
-        key: 'userChanged',
-        value: function userChanged(userId) {
-            _radmvc2.default.SalesController.sales(userId);
+        key: 'helloWorld',
+        value: function helloWorld() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                'Hello World',
+                _react2.default.createElement(
+                    'button',
+                    { onClick: _radmvc2.default.UserController.index },
+                    'Go Back'
+                )
+            );
         }
     }]);
 

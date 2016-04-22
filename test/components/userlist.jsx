@@ -12,10 +12,14 @@ export default class UserList extends React.Component{
             users.push(<li key={'userlist_' + i}>Username: {this.props.users[i].username}</li>);
         }
         
-        return <ul>{users}</ul>;
+        return <div>
+            <ul>{users}</ul>
+            <button onClick={this.props.onChangeView}>Change View</button>
+        </div>;
     }
 }
 
 UserList.propTypes = {
-    users:React.PropTypes.arrayOf(React.PropTypes.instanceOf(UserModel))
+    users:React.PropTypes.arrayOf(React.PropTypes.instanceOf(UserModel)).isRequired,
+    onChangeView:React.PropTypes.func.isRequired
 };

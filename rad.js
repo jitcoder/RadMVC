@@ -31,9 +31,9 @@ var Rad = {
             controllerInterface.instance = new Rad.Controllers[controllerName]();
             
             Rad[controllerName] = controllerInterface;
-            Rad[controllerName].viewElement = document.querySelector('[controller="' + controllerName + '"]');
-            if(Rad[controllerName].viewElement){
-                Rad.ReactDOM.render(Rad[controllerName].instance.index(),Rad[controllerName].viewElement);
+            Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
+            if(Rad[controllerName].instance.viewElement){
+                Rad.ReactDOM.render(Rad[controllerName].instance.index(),Rad[controllerName].instance.viewElement);
                 //Rad[controllerName].currentView = Rad[controllerName].index;
             }
             else{
