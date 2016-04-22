@@ -5,6 +5,7 @@ var Rad = {
     AjaxModel:AjaxModel,
     Controller:Controller,
     Controllers:{},
+    React:null,
     ReactDOM:null,
     Initialize:function(){
 
@@ -21,9 +22,10 @@ var Rad = {
                     }
                     
                     var result = this[method].apply(this,args);
-                    
                     if(result && result['$$typeof'] && result['props']){
-                        Rad.ReactDOM.render(result,Rad[controller].instance.viewElement);
+                        //Rad.ReactDOM.unmountComponentAtNode(Rad[controller].instance.viewElement);
+                        //Rad.ReactDOM.render(result,Rad[controller].instance.viewElement);
+                        Rad.ReactDOM.render(Rad.React.createElement(Rad.ControllerView,null,result),Rad[controllerName].instance.viewElement);
                     }
                     
                 }.bind(instance,controllerMethods[i],controllerName);
@@ -33,7 +35,7 @@ var Rad = {
             Rad[controllerName] = controllerInterface;
             Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
             if(Rad[controllerName].instance.viewElement){
-                Rad.ReactDOM.render(Rad[controllerName].instance.index(),Rad[controllerName].instance.viewElement);
+                Rad.ReactDOM.render(Rad.React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
                 //Rad[controllerName].currentView = Rad[controllerName].index;
             }
             else{
@@ -42,6 +44,16 @@ var Rad = {
         }
     }
 };
+
+if(window.React){
+    Rad.React = window.React;
+}
+else if(require){
+    Rad.React = require('react');
+}
+else{
+    throw "Unable to locate dependency ReactDOM";
+}
 
 if(window.ReactDOM){
     Rad.ReactDOM = window.ReactDOM;
@@ -52,6 +64,13 @@ else if(require){
 else{
     throw "Unable to locate dependency ReactDOM";
 }
+
+Rad.ControllerView = Rad.React.createClass({
+    displayName: 'ControllerView',
+    render: function() {
+        return Rad.React.createElement("div", {}, this.props.children);
+    }
+});
 
 module.exports = Rad;
 if(window){

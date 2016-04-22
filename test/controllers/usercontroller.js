@@ -1,6 +1,7 @@
 import Rad from 'radmvc';
 import UserModel from 'models/usermodel';
 import UserList from 'components/userlist';
+import CreateUser from 'components/createuser';
 
 import React from 'react';
 
@@ -20,7 +21,16 @@ export default class UserController extends Rad.Controller{
     }
 
     index(){
-        return <UserList onChangeView={Rad.UserController.helloWorld} users={this.users} />;
+        return <UserList onAddUser={Rad.UserController.createUser} onChangeView={Rad.UserController.helloWorld} users={this.users} />;
+    }
+    
+    createUser(){
+        return <CreateUser addUser={Rad.UserController.addUser}/>;
+    }
+    
+    addUser(newuser){
+        this.users.push(new UserModel(newuser));
+        Rad.UserController.index();
     }
    
     helloWorld(){

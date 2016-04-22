@@ -13,6 +13,7 @@ export default class UserList extends React.Component{
         }
         
         return <div>
+            <button onClick={this.props.onAddUser}>Add User</button>
             <ul>{users}</ul>
             <button onClick={this.props.onChangeView}>Change View</button>
         </div>;
@@ -21,5 +22,6 @@ export default class UserList extends React.Component{
 
 UserList.propTypes = {
     users:React.PropTypes.arrayOf(React.PropTypes.instanceOf(UserModel)).isRequired,
-    onChangeView:React.PropTypes.func.isRequired
+    onChangeView:React.PropTypes.func.isRequired,
+    onAddUser:React.PropTypes.func.isRequired
 };
