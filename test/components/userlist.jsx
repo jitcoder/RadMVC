@@ -1,9 +1,11 @@
-import React from 'react';
+import {React} from 'radmvc';
 import UserModel from 'models/usermodel';
 
 export default class UserList extends React.Component{
     constructor(props){
         super(props);
+        
+        this.render = this.render.bind(this);
     }
     
     render(){

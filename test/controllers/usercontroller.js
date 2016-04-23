@@ -1,9 +1,7 @@
-import Rad from 'radmvc';
+import {Rad,React} from 'radmvc';
 import UserModel from 'models/usermodel';
 import UserList from 'components/userlist';
 import CreateUser from 'components/createuser';
-
-import React from 'react';
 
 export default class UserController extends Rad.Controller{
     constructor(){

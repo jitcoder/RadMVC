@@ -1,4 +1,4 @@
-import React from 'react';
+import {React} from 'radmvc';
 
 export default class CreateUser extends React.Component{
     constructor(props){

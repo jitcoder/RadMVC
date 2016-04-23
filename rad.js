@@ -1,5 +1,7 @@
 var AjaxModel = require('./api/ajaxmodel');
 var Controller = require('./api/controller');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 var Rad = {
     AjaxModel:AjaxModel,
@@ -23,9 +25,9 @@ var Rad = {
                     
                     var result = this[method].apply(this,args);
                     if(result && result['$$typeof'] && result['props']){
-                        //Rad.ReactDOM.unmountComponentAtNode(Rad[controller].instance.viewElement);
-                        //Rad.ReactDOM.render(result,Rad[controller].instance.viewElement);
-                        Rad.ReactDOM.render(Rad.React.createElement(Rad.ControllerView,null,result),Rad[controllerName].instance.viewElement);
+                        //ReactDOM.unmountComponentAtNode(Rad[controller].instance.viewElement);
+                        //ReactDOM.render(result,Rad[controller].instance.viewElement);
+                        ReactDOM.render(React.createElement(Rad.ControllerView,null,result),Rad[controllerName].instance.viewElement);
                     }
                     
                 }.bind(instance,controllerMethods[i],controllerName);
@@ -35,7 +37,7 @@ var Rad = {
             Rad[controllerName] = controllerInterface;
             Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
             if(Rad[controllerName].instance.viewElement){
-                Rad.ReactDOM.render(Rad.React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
+                ReactDOM.render(React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
                 //Rad[controllerName].currentView = Rad[controllerName].index;
             }
             else{
@@ -45,34 +47,17 @@ var Rad = {
     }
 };
 
-if(window.React){
-    Rad.React = window.React;
-}
-else if(require){
-    Rad.React = require('react');
-}
-else{
-    throw "Unable to locate dependency ReactDOM";
-}
-
-if(window.ReactDOM){
-    Rad.ReactDOM = window.ReactDOM;
-}
-else if(require){
-    Rad.ReactDOM = require('react-dom');
-}
-else{
-    throw "Unable to locate dependency ReactDOM";
-}
-
-Rad.ControllerView = Rad.React.createClass({
+Rad.ControllerView = React.createClass({
     displayName: 'ControllerView',
     render: function() {
-        return Rad.React.createElement("div", {}, this.props.children);
+        return React.createElement("div", {}, this.props.children);
     }
 });
 
-module.exports = Rad;
+exports.Rad = Rad;
+exports.React = React;
+exports.ReactDOM = ReactDOM;
+
 if(window){
     window.Rad = Rad;
 }

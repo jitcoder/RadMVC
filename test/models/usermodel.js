@@ -1,4 +1,4 @@
-import Rad from 'radmvc';
+import {Rad} from 'radmvc';
 
 export default class UserModel extends Rad.AjaxModel{
     constructor(){
