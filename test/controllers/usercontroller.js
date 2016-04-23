@@ -27,6 +27,7 @@ export default class UserController extends Rad.Controller{
     }
     
     addUser(newuser){
+        debugger;
         this.users.push(new UserModel(newuser));
         Rad.UserController.index();
     }

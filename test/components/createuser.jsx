@@ -3,6 +3,8 @@ import {React} from 'radmvc';
 export default class CreateUser extends React.Component{
     constructor(props){
         super(props);
+        
+        this.addUser = this.addUser.bind(this);
     }
     
     render(){
@@ -23,6 +25,7 @@ export default class CreateUser extends React.Component{
     }
     
     addUser(){
+        debugger;
         this.props.addUser({
             username:this.refs.username.value,
             email:this.refs.email.value,

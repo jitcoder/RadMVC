@@ -99,16 +99,12 @@ var Rad = {
             var controllerMethods = Object.getOwnPropertyNames(Rad.Controllers[controllerName].prototype);
             for (var i = 0; i < controllerMethods.length; i++) {
                 controllerInterface[controllerMethods[i]] = function (method, controller) {
-                    var args = {};
-                    for (var i = 2; i < arguments.length; i++) {
-                        args[i] = arguments[i];
-                    }
-
+                    var args = [].slice.call(arguments, 2);
                     var result = this[method].apply(this, args);
                     if (result && result['$$typeof'] && result['props']) {
                         //ReactDOM.unmountComponentAtNode(Rad[controller].instance.viewElement);
-                        //ReactDOM.render(result,Rad[controller].instance.viewElement);
-                        ReactDOM.render(React.createElement(Rad.ControllerView, null, result), Rad[controllerName].instance.viewElement);
+                        ReactDOM.render(result, Rad[controller].instance.viewElement);
+                        //ReactDOM.render(React.createElement(Rad.ControllerView,null,result),Rad[controllerName].instance.viewElement);
                     }
                 }.bind(instance, controllerMethods[i], controllerName);
             }
@@ -117,21 +113,21 @@ var Rad = {
             Rad[controllerName] = controllerInterface;
             Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
             if (Rad[controllerName].instance.viewElement) {
-                ReactDOM.render(React.createElement(Rad.ControllerView, null, Rad[controllerName].instance.index()), Rad[controllerName].instance.viewElement);
-                //Rad[controllerName].currentView = Rad[controllerName].index;
+                //ReactDOM.render(React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
+                ReactDOM.render(Rad[controllerName].instance.index(), Rad[controllerName].instance.viewElement);
             } else {
-                    throw 'Controller found with no view to attach itself to (' + controllerName + ')';
-                }
+                throw 'Controller found with no view to attach itself to (' + controllerName + ')';
+            }
         }
     }
 };
 
-Rad.ControllerView = React.createClass({
-    displayName: 'ControllerView',
-    render: function render() {
-        return React.createElement("div", {}, this.props.children);
-    }
-});
+// Rad.ControllerView = React.createClass({
+//     displayName: 'ControllerView',
+//     render: function() {
+//         return React.createElement('div', {}, this.props.children);
+//     }
+// });
 
 exports.Rad = Rad;
 exports.React = React;
@@ -19302,7 +19298,10 @@ var CreateUser = function (_React$Component) {
     function CreateUser(props) {
         _classCallCheck(this, CreateUser);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).call(this, props));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).call(this, props));
+
+        _this.addUser = _this.addUser.bind(_this);
+        return _this;
     }
 
     _createClass(CreateUser, [{
@@ -19348,6 +19347,7 @@ var CreateUser = function (_React$Component) {
     }, {
         key: "addUser",
         value: function addUser() {
+            debugger;
             this.props.addUser({
                 username: this.refs.username.value,
                 email: this.refs.email.value,
@@ -19513,6 +19513,7 @@ var UserController = function (_Rad$Controller) {
     }, {
         key: 'addUser',
         value: function addUser(newuser) {
+            debugger;
             this.users.push(new _usermodel2.default(newuser));
             _radmvc.Rad.UserController.index();
         }
