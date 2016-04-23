@@ -2,7 +2,7 @@
   "name": "radmvc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "rad.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
