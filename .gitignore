@@ -4,6 +4,6 @@
 # Node.
 node_modules
 npm-debug.log
-dist/**/*
 
-browserify-cache.json
+# visual studio
+.vscode
