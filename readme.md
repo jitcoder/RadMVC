@@ -1,9 +1,10 @@
 # RadMVC
 
-RadMVC is the MC for React. It's an MVC framework which uses React for it's view. I enjoy using React every day, however, one
-thing that's always bothered me, eventhough React is the 'V' in MVC, I felt an emptiness in my life without the rest of the letters.
+RadMVC is the MC for React. It's an MVC framework which uses React for it's view.
 
-The goal of this framework is to provide a **simple** and **concise** way to seperate your presentation, business and data layers with the **smallest learning curve** possible.
+Essentially, RadMVC provides you with models and controllers to give you a complete MVC experience when using React.
+
+The goal of this framework is to provide a **simple** and **concise** way to separate your presentation, business and data layers with the **smallest learning curve** possible.
 
 Please feel free to view the 'Sales' sample app in the examples directory.
 
