@@ -11,18 +11,21 @@ Please feel free to view the 'Sales' sample app in the examples directory.
 ###### homecontroller.js
 ```javascript
 import {Rad,React} from 'radmvc';
+
 class HomeController extends Rad.Controller{
+    
     constructor(){
         super();
     }
     
     index(){
-        return <div>Hello World <button onClick={Rad.Controllers.HomeController.goodbye}>Bye!</button></div>
+        return <div>Hello World <button onClick={Rad.Controllers.HomeController.goodbye}>Bye!</button></div>;
     }
     
     goodbye(){
-        return <div>Good Bye!</div>
+        return <div>Good Bye!</div>;
     }
+    
 }
 //register HomeController with RadMVC
 Rad.Controllers.HomeController = HomeController;
