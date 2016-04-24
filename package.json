@@ -1,14 +1,11 @@
 {
   "name": "radmvc",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "RadMVC is the MC for React giving you a full MVC experience",
   "main": "rad.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react","mvc","radmvc"],
+  "author": "JitCoder",
+  "license": "MIT",
   "peerDependencies": {
     "react": ">=0.14.0",
     "react-dom": ">=0.14.0"
