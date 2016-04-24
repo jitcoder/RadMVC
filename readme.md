@@ -20,7 +20,7 @@ class HomeController extends Rad.Controller{
     }
     
     index(){
-        return <div>Hello World <button onClick={Rad.Controllers.HomeController.goodbye}>Bye!</button></div>;
+        return <div>Hello World <button onClick={Rad.HomeController.goodbye}>Bye!</button></div>;
     }
     
     goodbye(){

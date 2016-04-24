@@ -1,5 +1,6 @@
 function Controller(){
-    
+    this.viewElement = null;
+    this.lastView = null;
 }
 
 Controller.prototype.currentView = null;
