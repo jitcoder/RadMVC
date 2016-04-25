@@ -52,7 +52,7 @@ Rad.Controllers.HomeController = HomeController;
 - Guidelines
 
 ### Examples
-- [Todo List](https://github.com/jitcoder/radmvc/examples/todolist) (Simple Example)
+- [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist) (Simple Example)
 - [Sales App](https://github.com/jitcoder/radmvc/examples/salesapp) (Advanced Example)
 
 ### Documentation
