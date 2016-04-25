@@ -8,6 +8,8 @@ The goal of this framework is to provide a **simple** and **concise** way to sep
 
 Please feel free to view the 'Sales' sample app in the examples directory.
 
+*(note: the library currently builds fine, the examples and docs are currently being worked on. npm install radmvc to install)*
+
 #### Hello World Example
 ###### homecontroller.js
 ```javascript
