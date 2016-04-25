@@ -29,6 +29,6 @@ gulp.task('build:bundle',function(){
     .pipe(gulp.dest('./public'));
 });
 
-gulp.task('default',function(){
+gulp.task('default',['build:bundle'],function(){
     
 });

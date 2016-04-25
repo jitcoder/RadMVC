@@ -1,0 +1,21 @@
+@mixin button($size, $button-color, $text-color){
+    
+    border:1px solid darken($button-color,20%);
+    border-radius:5px;
+    
+    background-color:$button-color;
+    
+    font-size:$size;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    width:10em;
+    height:1.1em;
+    
+    color:$text-color;
+    
+    &:hover{
+        border:1px solid darken($button-color,10%);
+        background-color:darken($button-color,20%);
+    }
+    
+}

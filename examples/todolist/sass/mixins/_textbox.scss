@@ -1,0 +1,22 @@
+@mixin textbox($size,$border-color){
+    
+    font-size:$size;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    color:black;
+    border:1px solid $border-color;
+    border-radius: 5px;
+    transition: box-shadow 0.3s, border 0.3s;
+    height:1em;
+    width:20em;
+    
+    &:focus{
+        box-shadow: 0 0 5px 1px darken($border-color,20%);
+        border-color:#0088FF;
+        
+    }
+    
+    &:hover{
+        border-color:#4FADFF;
+    }
+}

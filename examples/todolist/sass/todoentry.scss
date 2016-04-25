@@ -1,0 +1,15 @@
+@import 'mixins/textbox';
+@import 'mixins/button';
+
+.todoentry{
+    
+    input{
+        @include textbox(1em,#e8e8e8)   
+    }
+    
+    button{
+        @include button(1em,#385FA8,#fff);
+        display:inline-block;
+    }
+    
+}
