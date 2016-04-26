@@ -11,7 +11,7 @@ var Rad = {
     ReactDOM:null,
     invokeAction:function(method,controller){
         var args = [].slice.call(arguments, 2);
-        var result = this[method].apply(this,args);
+        var result = this[method].apply(Rad[controller].instance,args);
         if(result && result['$$typeof'] && result['props']){
             ReactDOM.render(result,Rad[controller].instance.viewElement);
             Rad[controller].activeView = method;
@@ -30,7 +30,8 @@ var Rad = {
             }
             controllerInterface.controllerName = controllerName;
             controllerInterface.refresh = function(){
-                Rad.invokeAction(this.activeView,this.controllerName);
+                console.log('refreshing view:' + this.activeView + ' on controller ' + this.controllerName);
+                Rad[this.controllerName][this.activeView]();
             }.bind(controllerInterface);
             
             controllerInterface.instance = new Rad.Controllers[controllerName]();
@@ -39,7 +40,7 @@ var Rad = {
             Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
             if(Rad[controllerName].instance.viewElement){
                 //ReactDOM.render(React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
-                ReactDOM.render(Rad[controllerName].index(),Rad[controllerName].instance.viewElement);
+                Rad[controllerName].index();
             }
             else{
                 throw 'Controller found with no view to attach itself to ('+controllerName+')';

@@ -3,30 +3,64 @@
 const gulp = require('gulp');
 const browserify = require('browserify');
 const babelify = require('babelify');
-const streamify = require('gulp-streamify');
 const sassify = require('sassify');
-const uglify = require('gulp-uglify');
 const source = require('vinyl-source-stream');
+const browserifyInc = require('browserify-incremental');
 
-gulp.task('build:bundle',function(){
-    return browserify({
-        DEBUG:false,
-        entries:['./todo.js'],
-        extensions:['.js','.jsx','.scss'],
-        paths:['./']
+process.env.NODE_ENV = 'development';
+
+gulp.task('build:vendor',function(){
+    let b = browserify({
+                debug:true,
+                extensions:['.js','.jsx'],
+                paths:['./src'],
+                baseDir:'./',
+                require:['react','react-dom','radmvc'],
+                cache: {},
+                fullPaths:true
+            })
+            .transform(sassify,{
+                'auto-inject': true,
+                base64Encode: false,
+                sourceMap: true
+            })
+            .transform(babelify,{
+                presets:['babel-preset-es2015','babel-preset-react']
+            });
+    
+    //browserifyInc(b,{cacheFile:'./vendor.cache'});
+    
+    return b.bundle()
+            .pipe(source('vendor.js'))
+            .pipe(gulp.dest('./public'));
+})
+
+gulp.task('build:bundle',['build:vendor'],function(){
+    let b = browserify({
+        debug:true,
+        entries:['./src/todo.js'],
+        extensions:['.js','.jsx'],
+        paths:['./src'],
+        baseDir:'./',
+        external:['react','react-dom','radmvc'],
+        cache: {},
+        fullPaths:true
     })
     .transform(sassify,{
-      'auto-inject': true,
-      base64Encode: false,
-      sourceMap: false
+        'auto-inject': true,
+        base64Encode: false,
+        sourceMap: true
     })
-    .transform(babelify({
-        presets:['babel-preset-es2015','babel-preset-react']
-    }))
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(streamify(uglify()))
-    .pipe(gulp.dest('./public'));
+    .transform(babelify,{
+        presets:['babel-preset-es2015','babel-preset-react'],
+        sourceMaps:true
+    });
+    
+    browserifyInc(b,{cacheFile:'bundle.cache'});
+    
+    return b.bundle()
+            .pipe(source('bundle.js'))
+            .pipe(gulp.dest('./public'));
 });
 
 gulp.task('default',['build:bundle'],function(){

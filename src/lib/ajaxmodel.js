@@ -4,7 +4,7 @@ function AjaxModel(){
 
 }
 
-AjaxModel.prototype.send = function(method,url,data,contentType,additionalHeaders){
+AjaxModel.send = function(method,url,data,contentType,additionalHeaders){
     return new Promise(function(resolve,reject){
         try{
             if(typeof contentType === 'undefined'){
@@ -53,21 +53,26 @@ AjaxModel.prototype.send = function(method,url,data,contentType,additionalHeader
     });
 };
 
-
-AjaxModel.prototype.post = function(url,data,contentType,additionalHeaders){
-    return this.send('POST',url,data,contentType,additionalHeaders);
+AjaxModel.post = function(url,data,contentType,additionalHeaders){
+    return AjaxModel.send('POST',url,data,contentType,additionalHeaders);
 };
 
-AjaxModel.prototype.get = function(url,data,contentType,additionalHeaders){
-    return this.send('GET',url,data,contentType,additionalHeaders);
+AjaxModel.get = function(url,data,contentType,additionalHeaders){
+    return AjaxModel.send('GET',url,data,contentType,additionalHeaders);
 };
 
-AjaxModel.prototype.put = function(url,data,contentType,additionalHeaders){
-    return this.send('PUT',url,data,contentType,additionalHeaders);
+AjaxModel.put = function(url,data,contentType,additionalHeaders){
+    return AjaxModel.send('PUT',url,data,contentType,additionalHeaders);
 };
 
-AjaxModel.prototype.delete = function(url,data,contentType,additionalHeaders){
-    return this.send('DELETE',url,data,contentType,additionalHeaders);
+AjaxModel.delete = function(url,data,contentType,additionalHeaders){
+    return AjaxModel.send('DELETE',url,data,contentType,additionalHeaders);
 };
+
+AjaxModel.prototype.send = AjaxModel.send;
+AjaxModel.prototype.post = AjaxModel.post;
+AjaxModel.prototype.get = AjaxModel.get;
+AjaxModel.prototype.put = AjaxModel.put;
+AjaxModel.prototype.delete = AjaxModel.delete;
 
 module.exports = AjaxModel;

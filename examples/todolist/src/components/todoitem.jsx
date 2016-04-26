@@ -15,7 +15,7 @@ export default class TodoItem extends React.Component{
                 ref="completed"
                 type="checkbox" 
                 onChange={this.onCompletedChanged}
-                checked={this.state.model.completed} />
+                checked={this.props.model.completed} />
             <img src="/imgs/delete.png" onClick={this.onRemoveItem}/>
         </div>;
     }

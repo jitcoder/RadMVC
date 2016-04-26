@@ -38,7 +38,9 @@ export default class ItemModel extends Rad.AjaxModel{
         if(!callback || typeof callback !== "function")
             throw "fetch requires a callback function to be provided";
         
-        this.get('/todo')
+        //this is a static method, so there is no base class method.
+        //we will use the static ajax methods RadMVC provides.
+        Rad.AjaxModel.get('/todo')
         .then((data)=>{
             let result = [];
             for(let i = 0; i < data.length; i++){
@@ -52,15 +54,15 @@ export default class ItemModel extends Rad.AjaxModel{
     //real world scenario we'd probably just use an upsert..
     //update an existing todo item
     update(){
-        return this.put('/todo',this);
+        return super.put('/todo',this);
     }
     
     //add a new todo item
     create(){
-        return this.post('/todo',this);
+        return super.post('/todo',this);
     }
 
     remove(){
-        return this.delete('/todo',this);
+        return super.delete('/todo',this);
     }
 }

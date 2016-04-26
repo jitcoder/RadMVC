@@ -1,4 +1,4 @@
-import {Rad} from 'radmvc';
+import {Rad,React} from 'radmvc';
 import TodoEntry from 'components/todoentry';
 import TodoList from 'components/todolist';
 import ItemModel from 'models/itemmodel';
@@ -19,7 +19,7 @@ export default class TodoController extends Rad.Controller{
     
     index(){
         return <div>
-            <Entry onAddItem={Rad.TodoController.addItem}/>
+            <TodoEntry onAddItem={Rad.TodoController.addItem}/>
             <div className="separator"></div>
             <TodoList 
             items={this.items}
