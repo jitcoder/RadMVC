@@ -32,7 +32,7 @@ export default class TodoController extends Rad.Controller{
     removeItem(model){
         for(let i = 0; i < this.items.length; i++){
             if(this.items[i].item === model.item){
-                this.items.splice(index,1);
+                this.items.splice(i,1);
                 model.remove();
                 break;
             }
@@ -47,6 +47,7 @@ export default class TodoController extends Rad.Controller{
     }
     
     addItem(newItem){
+        newItem.create();
         this.items.push(newItem);
         Rad.TodoController.refresh();
     }

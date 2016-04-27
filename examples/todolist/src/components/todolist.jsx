@@ -14,7 +14,7 @@ export default class TodoList extends React.Component{
         
         for(let i = 0; i < this.props.items.length; i++){
             result.push(<TodoItem
-                    key={'todoitem'+i}
+                    key={'todoitem_'+i}
                     model={this.props.items[i]}
                     onItemChanged={this.props.onItemChanged}
                     onRemoveItem={this.props.onRemoveItem} />);

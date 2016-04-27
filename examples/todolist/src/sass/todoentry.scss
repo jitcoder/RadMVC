@@ -3,13 +3,27 @@
 
 .todoentry{
     
-    input{
-        @include textbox(1em,#e8e8e8)   
-    }
+    height:1.5em;
+    display:table;
+    width:100%;
     
+    span{
+        margin-right:1em;
+        display:table-cell;
+        padding-right:10px;
+        width:100%;
+        
+        input{
+            @include textbox(1em,#e8e8e8);
+            width:100%;
+        }
+    }
+
     button{
         @include button(1em,#385FA8,#fff);
-        display:inline-block;
+        width:10em;
+        height:1.5em;
+        display:table-cell;
     }
-    
+
 }

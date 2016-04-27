@@ -32,8 +32,7 @@ app.post('/todo',(req,res)=>{
     }
     else{
         todoList.push(req.body);
-        res.sendStatus(200);
-        res.send('ok')        
+        res.json('ok')
     }
 });
 
@@ -41,22 +40,20 @@ app.put('/todo',(req,res)=>{
    for(let i = 0; i < todoList.length; i++){
        if(todoList[i].item === req.body.item){
            todoList[i].completed = req.body.completed;
-           res.sendStatus(200);
-           res.send('ok');
+           res.json('ok');
            return;
        }
    }
    
    res.sendStatus(400);
-   res.send('failed');
+   res.json('failed');
 });
 
 app.delete('/todo',(req,res)=>{
    for(let i = 0; i < todoList.length; i++){
        if(todoList[i].item === req.body.item){
            todoList.splice(i,1);
-           res.sendStatus(200);
-           res.send('ok');
+           res.json('ok');
            return;
        }
    }

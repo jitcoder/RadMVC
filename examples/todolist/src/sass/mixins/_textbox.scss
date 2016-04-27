@@ -5,18 +5,21 @@
     
     color:black;
     border:1px solid $border-color;
-    border-radius: 5px;
+    border-radius: 3px;
     transition: box-shadow 0.3s, border 0.3s;
-    height:1em;
-    width:20em;
+    height:1.5em;
+    
+    outline:none;
     
     &:focus{
         box-shadow: 0 0 5px 1px darken($border-color,20%);
         border-color:#0088FF;
+        outline:none;
         
     }
     
     &:hover{
         border-color:#4FADFF;
+        outline:none;
     }
 }

@@ -15,8 +15,7 @@ var Rad = {
         if(result && result['$$typeof'] && result['props']){
             ReactDOM.render(result,Rad[controller].instance.viewElement);
             Rad[controller].activeView = method;
-            //ReactDOM.render(React.createElement(Rad.ControllerView,null,result),Rad[controllerName].instance.viewElement);
-        }    
+        }
     },
     Initialize:function(){
 
@@ -30,7 +29,6 @@ var Rad = {
             }
             controllerInterface.controllerName = controllerName;
             controllerInterface.refresh = function(){
-                console.log('refreshing view:' + this.activeView + ' on controller ' + this.controllerName);
                 Rad[this.controllerName][this.activeView]();
             }.bind(controllerInterface);
             
@@ -39,7 +37,6 @@ var Rad = {
             Rad[controllerName] = controllerInterface;
             Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
             if(Rad[controllerName].instance.viewElement){
-                //ReactDOM.render(React.createElement(Rad.ControllerView,null,Rad[controllerName].instance.index()),Rad[controllerName].instance.viewElement);
                 Rad[controllerName].index();
             }
             else{
@@ -48,13 +45,6 @@ var Rad = {
         }
     }
 };
-
-// Rad.ControllerView = React.createClass({
-//     displayName: 'ControllerView',
-//     render: function() {
-//         return React.createElement('div', {}, this.props.children);
-//     }
-// });
 
 exports.Rad = Rad;
 exports.React = React;

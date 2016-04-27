@@ -1,21 +1,33 @@
 import {Rad,React} from 'radmvc';
 import ItemModel from 'models/itemmodel';
+import 'sass/todoentry.scss';
 
 export default class TodoEntry extends React.Component{
     
     constructor(props){
         super(props);
+        
+        this.onAddClick = this.onAddClick.bind(this);
+        this.onKeyPress = this.onKeyPress.bind(this);
     }
     
     render(){
         return <div className="todoentry">
-            <input type="text" ref="item" />
+            <span>
+                <input type="text" ref="item" onKeyPress={this.onKeyPress} />
+            </span>
             <button onClick={this.onAddClick}>Add</button>
         </div>;
     }
     
+    onKeyPress(e){
+        if(e.key === 'Enter'){
+            this.onAddClick();
+        }
+    }
+    
     onAddClick(e){
-        this.props.onAddItem(new ItemModel({item:this.refs.item,completed:false}));
+        this.props.onAddItem(new ItemModel(this.refs.item.value,false));
         this.refs.item.value = '';
     }
 }

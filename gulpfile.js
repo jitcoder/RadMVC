@@ -7,6 +7,9 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const streamify = require('gulp-streamify');
 const fs = require('fs');
+const envify = require('envify');
+
+process.env.NODE_ENV = "production";
 
 gulp.task('build:radmvc',['build:modules'],function(){
     return browserify({
@@ -14,6 +17,7 @@ gulp.task('build:radmvc',['build:modules'],function(){
         entries: ['./rad.js'],
         extensions:['.js']
     })
+    .transform(envify)
     .bundle()
     .pipe(source('radmvc.min.js'))
     .pipe(streamify(uglify()))
@@ -22,7 +26,6 @@ gulp.task('build:radmvc',['build:modules'],function(){
 
 gulp.task('build:modules',function(){
    return gulp.src('./src/**/*')
-   .pipe(uglify())
    .pipe(gulp.dest('./'));
 });
 

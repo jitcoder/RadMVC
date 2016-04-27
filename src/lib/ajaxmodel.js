@@ -20,6 +20,17 @@ AjaxModel.send = function(method,url,data,contentType,additionalHeaders){
                 req.setRequestHeader(additionalHeaders[i].key,additionalHeaders[i].value);
             }
             if(contentType.substring(0,16) === 'application/json'){
+                if(data instanceof Rad.AjaxModel){
+                    var result = {};
+                    var proto = Object.getPrototypeOf(data);
+                    var props = Object.getOwnPropertyNames(proto);
+                    for(var i = 0; i < props.length; i++){
+                        if(typeof data[props[i]] !== "function"){
+                            result[props[i]] = data[props[i]];
+                        }
+                    }
+                    data = result;
+                }
                 req.send(JSON.stringify(data));
             }
             else{
