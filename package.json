@@ -1,6 +1,6 @@
 {
   "name": "radmvc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "RadMVC is the MC for React giving you a full MVC experience",
   "main": "rad.js",
   "keywords": [
