@@ -25,7 +25,7 @@ gulp.task('build:radmvc',['build:modules'],function(){
 });
 
 gulp.task('build:modules',function(){
-   return gulp.src('./src/**/*')
+   return gulp.src('./src/**/*.js')
    .pipe(gulp.dest('./'));
 });
 
@@ -43,7 +43,7 @@ gulp.task('build:package-json',function(){
         let pkg = JSON.parse(fs.readFileSync('./package.json'));
         delete pkg.devDependencies;
         fs.writeFileSync('./radmvc/package.json',JSON.stringify(pkg));
-        return true;
+        return gulp.src('./src/readme.md').pipe(gulp.dest('./radmvc'));
     }
     catch(e){
         console.log(e.message);
