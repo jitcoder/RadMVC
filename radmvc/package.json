@@ -1,1 +1,1 @@
-{"name":"radmvc","version":"1.0.3","description":"RadMVC is the MC for React giving you a full MVC experience","main":"rad.js","keywords":["react","mvc","radmvc"],"author":"JitCoder","license":"MIT","peerDependencies":{"react":">=0.14.0","react-dom":">=0.14.0"}}
+{"name":"radmvc","version":"1.0.4","description":"RadMVC is the MC for React giving you a full MVC experience","main":"rad.js","keywords":["react","mvc","radmvc"],"author":"JitCoder","license":"MIT","peerDependencies":{"react":">=0.14.0","react-dom":">=0.14.0"}}
