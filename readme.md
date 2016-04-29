@@ -42,6 +42,7 @@ Rad.Controllers.HomeController = HomeController;
     <body>
         <div controller="HomeController"></div>
     </body>
+    <script src="/radmvc.min.js"></script>
 </html>
 ```
 
@@ -55,7 +56,6 @@ Rad.Controllers.HomeController = HomeController;
 
 ### Examples
 - [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist) (Simple Example)
-- [Sales App](https://github.com/jitcoder/radmvc/examples/salesapp) (Advanced Example)
 
 ### Documentation
 - [RadMVC](https://github.com/jitcoder/radmvc/docs/radmvc.md)
