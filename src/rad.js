@@ -1,9 +1,11 @@
 var AjaxModel = require('./lib/ajaxmodel');
+var Model = require('./lib/model');
 var Controller = require('./lib/controller');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Rad = {
+    Model:Model,
     AjaxModel:AjaxModel,
     Controller:Controller,
     Controllers:{},

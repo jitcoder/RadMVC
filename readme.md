@@ -60,10 +60,7 @@ Rad.Controllers.HomeController = HomeController;
 ### Documentation
 - [RadMVC](https://github.com/jitcoder/radmvc/docs/radmvc.md)
 - [AjaxModel](https://github.com/jitcoder/radmvc/docs/ajaxmodel.md)
-- SocketModel (*coming soon*)
-- WebSQLModel (*coming soon*)
-- IndexedModel (*coming soon*)
-- WebStorageModel (*coming soon*)
+- DbModel (*coming soon*)
 
 #### Installation
 
