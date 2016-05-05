@@ -109,6 +109,6 @@ gulp.task('build:bundle',['build:vendor'],function(){
             .pipe(gulp.dest('./public'));
 });
 
-gulp.task('default',['build:bundle'],function(){
+gulp.task('default',['build:vendor','build:bundle'],function(){
     
 });

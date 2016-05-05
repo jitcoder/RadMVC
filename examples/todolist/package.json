@@ -22,7 +22,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "pug": "^2.0.0-alpha6",
-    "radmvc": "^1.0.2",
+    "radmvc": "*",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "sassify": "^0.10.0",

@@ -1,59 +1,96 @@
-var AjaxModel = require('./lib/ajaxmodel');
-var Controller = require('./lib/controller');
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-var Rad = {
-    AjaxModel:AjaxModel,
-    Controller:Controller,
-    Controllers:{},
-    React:null,
-    ReactDOM:null,
-    invokeAction:function(method,controller){
+var Rad = (function(window,document){
+    
+    var React = require('react');
+    var ReactDOM = require('react-dom');    
+    
+    var instances = {};
+    var controllers = {};
+    var controllerStates = {};
+    
+    function Controller(){
+        var proto = Object.getPrototypeOf(this);
+        controllers[proto.constructor.name] = proto;
+    }
+    
+    var api = {
+        Model:require('./lib/model'),
+        AjaxModel:require('./lib/ajaxmodel'),
+        Controller:Controller,
+        Initialize:initialize,
+        Controllers:controllers
+    };
+    
+    function invoke(controller,method){
         var args = [].slice.call(arguments, 2);
-        var result = this[method].apply(Rad[controller].instance,args);
+        var instance = instances[controller];
+        var result = instances[method].apply(instances,args);
+        //todo: figure out way to do type check rather than using properties
+        //to determine whether result is a react component;
+        //note: babel determines by checking if object has a render method
         if(result && result['$$typeof'] && result['props']){
-            ReactDOM.render(result,Rad[controller].instance.viewElement);
-            Rad[controller].activeView = method;
-        }
-    },
-    Initialize:function(){
-
-        for(var controllerName in Rad.Controllers){
-            var instance = new Rad.Controllers[controllerName]();
-            
-            var controllerInterface = {};
-            var controllerMethods = Object.getOwnPropertyNames(Rad.Controllers[controllerName].prototype);
-            for(var i = 0; i < controllerMethods.length; i++){
-                controllerInterface[controllerMethods[i]] = Rad.invokeAction.bind(instance,controllerMethods[i],controllerName);
+            if(!controllerStates[controller].element){
+                controllerStates[controller].element = document.querySelector('[controller="' + controller + '"]');
             }
-            controllerInterface.controllerName = controllerName;
-            controllerInterface.refresh = function(){
-                Rad[this.controllerName][this.activeView]();
-            }.bind(controllerInterface);
             
-            controllerInterface.instance = new Rad.Controllers[controllerName]();
+            if(!controllerStates[controller].element){
+                console.warn("A view was returned by the controller, but RadMVC could not find a DOM element linked with the controller '" + controller + "'");
+            }
             
-            Rad[controllerName] = controllerInterface;
-            Rad[controllerName].instance.viewElement = document.querySelector('[controller="' + controllerName + '"]');
-            if(Rad[controllerName].instance.viewElement){
-                Rad[controllerName].index();
-            }
-            else{
-                throw 'Controller found with no view to attach itself to ('+controllerName+')';
-            }
+            ReactDOM.render(result,controllerStates[controller].element);
+            controllerStates[controller].view = method;
         }
     }
-};
 
-exports.Rad = Rad;
-exports.React = React;
-exports.ReactDOM = ReactDOM;
+    function refresh(controller){
+        var args = [].slice.call(arguments, 1);
+        controllers[controller][controllerStates[controller].view].apply(instances[controller],args);
+    }
+    
+    function generateControllerInterface(controller){
+        var instance = instances[controller];
+        var proto = controllers[controller].constructor.prototype;
+        var props = Object.getOwnPropertyNames(proto);
+        var icontroller = {};
+        
+        controllerStates[controller] = {
+            element: document.querySelector('[controller="' + controller + '"]'),
+            view: 'index'
+        }
+        
+        for(var i = 0; i < props.length; i++){
+            var desc = Object.getOwnPropertyDescriptor(proto,props[i]);
+            if(desc.value && typeof desc.value === 'function'){
+                icontroller[props[i]] = invoke.bind(instance,controller,props[i]);
+            }
+            
+        }
+        
+        icontroller.refresh = refresh.bind(null,controller);
+        
+        return icontroller;
+    }
+    
+    function initialize(){
+        for(var controller in controllers){
+            var instance = instances[controller] = new controllers[controller]();
+            api[controller] = generateControllerInterface(controller);
+        }
+    }
 
-if(window){
-    window.Rad = Rad;
-}
+    if(window){
+        window.Rad = Rad;
+    }
 
-document.addEventListener('DOMContentLoaded',function(){
-    Rad.Initialize();
-});
+    if(document){
+        document.addEventListener('DOMContentLoaded',function(){
+            initialize();
+        });
+    }
+
+    return api;
+    
+})(window,document);
+
+module.exports = Rad;
+
+

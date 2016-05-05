@@ -1,4 +1,5 @@
-import {Rad,React} from 'radmvc';
+import Rad from 'radmvc';
+import React from 'react';
 import TodoEntry from 'components/todoentry';
 import TodoList from 'components/todolist';
 import ItemModel from 'models/itemmodel';

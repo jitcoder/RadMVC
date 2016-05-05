@@ -51,4 +51,8 @@ gulp.task('build:package-json',function(){
     }
 });
 
+gulp.task('copy:todolist',['build:npm-package'],function(){
+    return gulp.src('./src/**/*.*').pipe(gulp.dest('./examples/todolist/node_modules/radmvc/'));
+})
+
 gulp.task('default',['build:radmvc'],function(){});

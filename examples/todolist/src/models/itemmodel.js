@@ -1,4 +1,4 @@
-import {Rad} from 'radmvc';
+import Rad from 'radmvc';
 
 //create ajax backed model
 export default class ItemModel extends Rad.AjaxModel{

@@ -1,4 +1,5 @@
-import {Rad, React} from 'radmvc';
+import Rad from 'radmvc';
+import React from 'react';
 import 'sass/todoitem.scss';
 import ItemModel from 'models/itemmodel';
 
