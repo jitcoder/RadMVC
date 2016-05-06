@@ -54,11 +54,8 @@ Rad.Controllers.HomeController = HomeController;
 
 ### Contents of this Readme
 - <a href="#examples">Examples</a>
-- Documentation
-- Installation
-- Controllers
-- Models
-- Guidelines
+- <a href="#documentation">Documentation</a>
+- <a href="#installation">Installation</a>
 
 <h3 id="examples">Examples</h3>
 - [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist)
@@ -70,7 +67,7 @@ Rad.Controllers.HomeController = HomeController;
 - [AjaxModel](https://github.com/jitcoder/radmvc/docs/ajaxmodel.md)
 - DbModel (*coming soon*)
 
-#### Installation
+<h4 id="installation">Installation</h4>
 
 ##### NPM
 ```sh
