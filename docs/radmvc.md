@@ -24,7 +24,7 @@ an extremely satisfying development experience.
 However, (unfortunately) it is very common to see applications with a *Root Component*
 which functions as the 'App.'
 
-The 'App Component' ends up containing a lot of data logic (eg, making Ajax requests,
+The 'App Component' ends up containing a lot of data & business logic (eg, making Ajax requests,
 storing it in its state, processing it, passing this data downwards to child components etc..).
 The result is, the web application looses it's maintainability.
 
