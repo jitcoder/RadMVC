@@ -6,9 +6,14 @@ Essentially, RadMVC provides you with models and controllers to give you a compl
 
 The goal of this framework is to provide a **simple** and **concise** way to separate your presentation, business and data layers with the **smallest learning curve** possible.
 
-Please feel free to view the 'Sales' sample app in the examples directory.
+Please feel free to view the 'TodoList' sample app in the examples directory.
 
-*(note: the library currently builds fine, the examples and docs are currently being worked on. npm install radmvc to install)*
+*(note: the library currently builds fine, the examples and docs are currently being worked on.)*
+
+```
+npm install radmvc
+```
+
 
 #### Hello World Example
 ###### homecontroller.js
@@ -47,7 +52,7 @@ Rad.Controllers.HomeController = HomeController;
 </html>
 ```
 
-### Contents
+### Contents of this Readme
 - Examples
 - Documentation
 - Installation
@@ -56,10 +61,12 @@ Rad.Controllers.HomeController = HomeController;
 - Guidelines
 
 ### Examples
-- [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist) (Simple Example)
+- [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist)
 
 ### Documentation
 - [RadMVC](https://github.com/jitcoder/radmvc/docs/radmvc.md)
+- [Controller](https://github.com/jitcoder/radmvc/docs/controller.md)
+- [Model](https://github.com/jitcoder/radmvc/docs/model.md)
 - [AjaxModel](https://github.com/jitcoder/radmvc/docs/ajaxmodel.md)
 - DbModel (*coming soon*)
 
@@ -73,11 +80,6 @@ npm install radmvc --save
 ##### Minified File
 ```sh
 https://ComingSoon.com/from/a/cdn.min.js
-```
-
-##### Bower
-```sh
-Also Coming Soon
 ```
 
 ### Controller
@@ -147,20 +149,3 @@ catch(e){
 ```
 
 All methods return a **Promise**
-
-##### SocketModel
-Allows you to perform Web Socket backed I/O for your model
-
-*coming soon*
-##### WebSQLModel
-Allows you to perform WebSQL backed I/O for your model
-
-*coming soon*
-##### IndexedModel
-Allows you to perform IndexedDB backed I/O for your model
-
-*coming soon*
-##### WebStorageModel
-Allows you to perform localStorage backed I/O for your model
-
-*coming soon*
