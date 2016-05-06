@@ -13,7 +13,8 @@ Please feel free to view the 'Sales' sample app in the examples directory.
 #### Hello World Example
 ###### homecontroller.js
 ```javascript
-import {Rad,React} from 'radmvc';
+import Rad from 'radmvc';
+import React from 'react';
 
 class HomeController extends Rad.Controller{
     
