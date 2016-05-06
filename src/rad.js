@@ -6,24 +6,25 @@ var Rad = (function(window,document){
     var instances = {};
     var controllers = {};
     var controllerStates = {};
-    
+
     function Controller(){
-        var proto = Object.getPrototypeOf(this);
-        controllers[proto.constructor.name] = proto;
+        
     }
-    
+
     var api = {
         Model:require('./lib/model'),
-        AjaxModel:require('./lib/ajaxmodel'),
+        AjaxModel:null,
         Controller:Controller,
         Initialize:initialize,
         Controllers:controllers
     };
     
+    api.AjaxModel = require('./lib/ajaxmodel')(api)
+    
     function invoke(controller,method){
         var args = [].slice.call(arguments, 2);
         var instance = instances[controller];
-        var result = instances[method].apply(instances,args);
+        var result = instance[method].apply(instance,args);
         //todo: figure out way to do type check rather than using properties
         //to determine whether result is a react component;
         //note: babel determines by checking if object has a render method
@@ -43,12 +44,12 @@ var Rad = (function(window,document){
 
     function refresh(controller){
         var args = [].slice.call(arguments, 1);
-        controllers[controller][controllerStates[controller].view].apply(instances[controller],args);
+        api[controller][controllerStates[controller].view].apply(instances[controller],args);
     }
     
     function generateControllerInterface(controller){
         var instance = instances[controller];
-        var proto = controllers[controller].constructor.prototype;
+        var proto = controllers[controller].prototype;
         var props = Object.getOwnPropertyNames(proto);
         var icontroller = {};
         
@@ -74,6 +75,9 @@ var Rad = (function(window,document){
         for(var controller in controllers){
             var instance = instances[controller] = new controllers[controller]();
             api[controller] = generateControllerInterface(controller);
+            if(controllerStates[controller].element){
+                api[controller].index();
+            }
         }
     }
 
