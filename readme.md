@@ -53,14 +53,14 @@ Rad.Controllers.HomeController = HomeController;
 ```
 
 ### Contents of this Readme
-- <a href="#hello-world-example">Examples</a>
+- <a href="#examples">Examples</a>
 - Documentation
 - Installation
 - Controllers
 - Models
 - Guidelines
 
-### Examples
+<h3 id="examples">Examples</h3>
 - [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist)
 
 ### Documentation
