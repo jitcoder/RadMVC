@@ -53,7 +53,7 @@ Rad.Controllers.HomeController = HomeController;
 ```
 
 ### Contents of this Readme
-- [Examples](/#hello-world-example)
+- <a href="#hello-world-example">Examples</a>
 - Documentation
 - Installation
 - Controllers
