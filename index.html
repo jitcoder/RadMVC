@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Radmvc by jitcoder</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Radmvc</h1>
+        <h2>RadMVC is the MC for React giving you a full MVC experience</h2>
+        <a href="https://github.com/jitcoder/RadMVC" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="radmvc" class="anchor" href="#radmvc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RadMVC</h1>
+
+<p>RadMVC is the MC for React. It's an MVC framework which uses React for it's view.</p>
+
+<p>Essentially, RadMVC provides you with models and controllers to give you a complete MVC experience when using React.</p>
+
+<p>The goal of this framework is to provide a <strong>simple</strong> and <strong>concise</strong> way to separate your presentation, business and data layers with the <strong>smallest learning curve</strong> possible.</p>
+
+<p>Please feel free to view the 'Sales' sample app in the examples directory.</p>
+
+<p><em>(note: the library currently builds fine, the examples and docs are currently being worked on. npm install radmvc to install)</em></p>
+
+<h4>
+<a id="hello-world-example" class="anchor" href="#hello-world-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hello World Example</h4>
+
+<h6>
+<a id="homecontrollerjs" class="anchor" href="#homecontrollerjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>homecontroller.js</h6>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">Rad</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>radmvc<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">React</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">class</span> <span class="pl-en">HomeController</span> <span class="pl-k">extends</span> <span class="pl-en">Rad</span>.<span class="pl-smi">Controller</span>{
+
+    <span class="pl-en">constructor</span>(){
+        <span class="pl-v">super</span>();
+    }
+
+    <span class="pl-en">index</span>(){
+        <span class="pl-k">return</span> <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>Hello World <span class="pl-k">&lt;</span>button onClick<span class="pl-k">=</span>{<span class="pl-smi">Rad</span>.<span class="pl-smi">HomeController</span>.<span class="pl-smi">goodbye</span>}<span class="pl-k">&gt;</span>Bye<span class="pl-k">!</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>button<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>;
+    }
+
+    <span class="pl-en">goodbye</span>(){
+        <span class="pl-k">return</span> <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>Good Bye<span class="pl-k">!</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>;
+    }
+
+}
+<span class="pl-c">//register HomeController with RadMVC</span>
+<span class="pl-smi">Rad</span>.<span class="pl-smi">Controllers</span>.<span class="pl-smi">HomeController</span> <span class="pl-k">=</span> HomeController;</pre></div>
+
+<h6>
+<a id="indexhtml" class="anchor" href="#indexhtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>index.html</h6>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">html</span>&gt;
+    &lt;<span class="pl-ent">head</span>&gt;
+        &lt;<span class="pl-ent">title</span>&gt;Hello World&lt;/<span class="pl-ent">title</span>&gt;
+    &lt;/<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">body</span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">controller</span>=<span class="pl-s"><span class="pl-pds">"</span>HomeController<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">body</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>/radmvc.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<h3>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h3>
+
+<ul>
+<li>Examples</li>
+<li>Documentation</li>
+<li>Installation</li>
+<li>Controllers</li>
+<li>Models</li>
+<li>Guidelines</li>
+</ul>
+
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+
+<ul>
+<li>
+<a href="https://github.com/jitcoder/RadMVC/tree/master/examples/todolist">Todo List</a> (Simple Example)</li>
+</ul>
+
+<h3>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h3>
+
+<ul>
+<li><a href="https://github.com/jitcoder/radmvc/docs/radmvc.md">RadMVC</a></li>
+<li><a href="https://github.com/jitcoder/radmvc/docs/ajaxmodel.md">AjaxModel</a></li>
+<li>DbModel (<em>coming soon</em>)</li>
+</ul>
+
+<h4>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h4>
+
+<h5>
+<a id="npm" class="anchor" href="#npm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NPM</h5>
+
+<div class="highlight highlight-source-shell"><pre>npm install radmvc --save</pre></div>
+
+<h5>
+<a id="minified-file" class="anchor" href="#minified-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Minified File</h5>
+
+<div class="highlight highlight-source-shell"><pre>https://ComingSoon.com/from/a/cdn.min.js</pre></div>
+
+<h5>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bower</h5>
+
+<div class="highlight highlight-source-shell"><pre>Also Coming Soon</pre></div>
+
+<h3>
+<a id="controller" class="anchor" href="#controller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Controller</h3>
+
+<p>To create a controller, create a class which extends Rad.Controller</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">MyController</span> <span class="pl-k">extends</span> <span class="pl-en">Rad</span>.<span class="pl-smi">Controller</span></pre></div>
+
+<p>RadMVC maintains a single instance of your controller  class and will call the controller's <strong>index</strong> method to display the intial view.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">MyController</span> <span class="pl-k">extends</span> <span class="pl-en">Rad</span>.<span class="pl-smi">Controller</span>{
+    <span class="pl-en">constructor</span>(){
+        <span class="pl-v">super</span>();
+    }
+
+    <span class="pl-en">index</span>(){
+        <span class="pl-k">return</span> <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>sup<span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+    }
+}</pre></div>
+
+<p>The last step is to register the controller with RadMVC. This is done outside of the class definition, similar to how propTypes are defined with React using ES6.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">Rad</span>.<span class="pl-smi">Controllers</span>.<span class="pl-smi">MyController</span> <span class="pl-k">=</span> MyController;</pre></div>
+
+<p>In order for RadMVC to know which DOM element to use as the 'View Port', you must assign a DOM element with an attribute <strong>controller=NAME-OF-YOUR-CONTROLLER</strong>.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">controller</span>=<span class="pl-s"><span class="pl-pds">"</span>MyController<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>The purpose of the controller is to contain your 'state' as well as all of your business logic. One way to look at it would be: your controller class is going to be your Root react component. Your React components should technically be stateless (unless unavoidable) and only concern themselves with rendering using props the controller passes to them. For an example of this please view the 'Sales Example'</p>
+
+<p>You will notice in the Sales Example that the controller's methods aren't bounded to the controller instance in the constructor. This is because RadMVC will automagically bind all controller methods to the instance of the controller that it maintains.</p>
+
+<h3>
+<a id="models" class="anchor" href="#models" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Models</h3>
+
+<h5>
+<a id="ajaxmodel" class="anchor" href="#ajaxmodel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AjaxModel</h5>
+
+<p>The AjaxModels exposes RESTful ajax methods to the inheriting class, enabling that class to utilize web api's as it's datasource.
+Methods which are exposed are get,post,put,delete. Each method has the same signature: (url,data,contentType,additionalHeaders)</p>
+
+<ul>
+<li>
+<strong>url</strong> type:string - required</li>
+<li>
+<strong>data</strong> type:any - required for post and put</li>
+<li>
+<strong>contentType</strong> type:string - optional <em>defaults to application/json</em>
+</li>
+<li>
+<strong>additionalHeaders</strong> type:array - optional</li>
+</ul>
+
+<h5>
+<a id="eg" class="anchor" href="#eg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>eg.</h5>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">post</span>(<span class="pl-s"><span class="pl-pds">'</span>/someurl<span class="pl-pds">'</span></span>,{hello<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>})
+.<span class="pl-en">then</span>(()<span class="pl-k">=&gt;</span>{
+
+})
+.<span class="pl-en">catch</span>((<span class="pl-smi">e</span>)<span class="pl-k">=&gt;</span>{
+
+};</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">try</span>{
+ data <span class="pl-k">=</span> <span class="pl-k">await</span> <span class="pl-en">post</span>(<span class="pl-s"><span class="pl-pds">'</span>/someurl<span class="pl-pds">'</span></span>,{hello<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>});
+}
+<span class="pl-k">catch</span>(e){
+
+}</pre></div>
+
+<p>All methods return a <strong>Promise</strong></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/jitcoder/RadMVC/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/jitcoder/RadMVC/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/jitcoder/RadMVC"></a> is maintained by <a href="https://github.com/jitcoder">jitcoder</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
