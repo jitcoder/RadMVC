@@ -64,7 +64,7 @@ Rad.Controllers.HomeController = HomeController;
 - [Todo List](https://github.com/jitcoder/RadMVC/tree/master/examples/todolist)
 
 ### Documentation
-- [RadMVC](https://github.com/jitcoder/radmvc/docs/radmvc.md)
+- [RadMVC](https://github.com/jitcoder/RadMVC/blob/master/docs/radmvc.md)
 - [Controller](https://github.com/jitcoder/radmvc/docs/controller.md)
 - [Model](https://github.com/jitcoder/radmvc/docs/model.md)
 - [AjaxModel](https://github.com/jitcoder/radmvc/docs/ajaxmodel.md)
