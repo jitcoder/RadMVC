@@ -11,7 +11,8 @@ Please visit the [github page](https://github.com/jitcoder/radmvc) to view **doc
 #### Hello World Example
 ###### homecontroller.js
 ```javascript
-import {Rad,React} from 'radmvc';
+import Rad from 'radmvc';
+import React from 'react';
 
 class HomeController extends Rad.Controller{
     
