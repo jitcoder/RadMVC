@@ -75,8 +75,10 @@ npm install radmvc --save
 ```
 
 ##### Minified File
+
 ```sh
-https://ComingSoon.com/from/a/cdn.min.js
+CDN   : https://radmvc-3e4c.kxcdn.com/jitcoder/RadMVC/blob/master/dist/radmvc.min.js
+GitHub: https://github.com/jitcoder/RadMVC/blob/master/dist/radmvc.min.js
 ```
 
 ### Controller

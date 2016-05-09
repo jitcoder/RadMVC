@@ -12,13 +12,70 @@ var Rad = (function(window,document){
     function Model(){}
 
     Model.prototype.serialize = function(){
-        var props = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
+        var props = Object.getOwnPropertyNames(this.prototype);
         var result = {};
         for(var i = 0; i < props.length; i++){
-            result[props[i]] = this[props[i]] ;
+            var desc = Object.getOwnPropertyDescriptor(this.prototype,props[i])
+            if(desc.get){
+                result[props[i]] = this[props[i]];
+            }
+        }
+        return result;
+    }
+
+    Model.prototype.deserialize = function(src){
+        for(var prop in src){
+            var desc = Object.getOwnPropertyDescriptor(this.prototype,prop);
+            if(desc && desc.set){
+                this[prop] = src[prop]
+            }
+        }
+    }
+    
+    Model.arrayOf = function(cls){
+            
+            if(!(cls instanceof Model)){
+                throw "Model.arrayOf must be provided a class which extends Rad.Model";
+            }
+            
+            var result = new Function();
+            result.prototype = new ModelArray();
+            result.prototype.typeOf = cls;
+
+            return result;
+    }
+    
+    function ModelArray(){
+        
+    }
+    
+    ModelArray.prototype = new Array();
+    
+    ModelArray.prototype.serialize = function(){
+        var result = [];
+        for(var i = 0; i < this.length; i++){
+            if(this[i] instanceof this.typeOf){
+                result.push(this[i].serialize())
+            }
+        }
+    }
+    
+    ModelArray.prototype.deserialize = function(src){
+        var result = [];
+        if(src instanceof Array){
+            for(var i = 0; i < src.length; i++){
+                var model = new this.typeOf();
+                result.push(model.deserialize(src[i]));
+            }
         }
         
         return result;
+    }
+
+    Model.deserialize = function(obj){
+        var src = obj;
+        
+        return 
     }
 
     var api = {

@@ -31,55 +31,82 @@ The result is, the web application looses it's maintainability.
 Now, a lot of this gobbly goop code can be eliminated with Flux, Redux and taking advantage of
 the observer pattern but it can also be eliminated with a MVC pattern.
 
-## Implementation
+## API
 
-Every controller in RadMVC must implement an **index** method which returns a react component or element.
-We'll refer to methods which return components or elements as *view methods*.
+### Controller
+<a href="controller.md">More details</a>
+    - Controller.Refresh()
+        Re-renders previously 
 
-RadMVC will always maintain a single instance of your controllers which you can interact with via
-Rad.*YourController*.*ControllerMethod*.
-
-eg.
+Usage
 ```javascript
-class YourController extends Rad.Controller{
+class MyController extends Rad.Controller{
     constructor(){
         super();
     }
     
     index(){
-        return <div>Hello World</div>
-    }
-    
-    differentView(){
-        return <div>Different VieW</div>
+        return <div>hello</div>;
     }
 }
+Rad.Controllers.MyController = MyController;
 
-Rad.YourController.index() //updates view with react component returned by method
-Rad.YourController.differentView() //updates view with react component returned by the differentView method
+Rad.MyController.refresh();
 ```
 
-A controller is bound to a DOMElement and will treat the dom element as it's view port.
+### Model
+<a href="model.md">More Details</a>
+    - Model.serialize()
+        Iterates all properties of the derived class an returns an object literal representation
 
-```html
-<div controller="YourController"></div>
-```
+    - Model.deserialize(*object*)
+        Iterates all properties of *object* and assigns equally named properties
+        in the derived class which have property setters.
 
-When calling methods on your controller via Rad, those methods are automatically bound to the instance of the controller.
-Allowing you to access members defined in your controllers contructor.
-
-eg.
+Usage
 ```javascript
-class YourController extends Rad.Controller{
+class MyModel extends Rad.Model{
+    constructor(){
+        this._x = 5;
+    }
+    
+    get x(){
+        return this._x;
+    }
+    
+    set x(value){
+        this._x = value;
+    }
+}
+var m = new MyModel();
+var s = m.serialize();
+s.x = 6;
+MyModel.deserialize(s)
+```
+
+### ModelArray
+Helper class when dealing with arrays of your models (extends Array.prototype).
+Contains the same *serialize*, *deserialize* methods but handle arrays.
+
+Usage
+```javascript
+class MyModelArray extends Rad.Model.arrayOf(MyModel){
     constructor(){
         super();
-        this.x = 5;
     }
-    
-    index(){
-        return <div>value of x is {this.x}</div>;
-    }
+}
+
+var mydata = [
+    {x:5},
+    {x:1}
+]
+
+var myModelArray = new MyModelArray();
+
+myModelArray.deserialize(mydata);
+
+for(var i = 0; i < myModelArray.length; i++){
+    console.log(myModelArray[i].x)
 }
 ```
 
-This makes controllers useful for storing the **state** of the controllers area of concern.
